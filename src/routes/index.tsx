@@ -1,23 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import heroImg from "@/assets/sarkar-hero.jpg";
-import giftSetImg from "@/assets/gift-set.jpg";
-import notesBg from "@/assets/notes-bg.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Sarkar Perfume by Bhuvan Bam — Official Store" },
+      { title: "Sarkar Perfumes — Premium Fragrances, Hand-Picked" },
       {
         name: "description",
         content:
-          "Shop Sarkar Perfume by Bhuvan Bam. Boss Bottled Beyond Eau de Parfum 50ml gift set with signature gold packaging, free shipping across India.",
+          "The full Sarkar range of unisex parfums plus best-selling designer fragrances worth your money, including the BOSS Bottled Beyond 50 ml gift set.",
       },
-      { property: "og:title", content: "Sarkar Perfume by Bhuvan Bam — Official Store" },
+      { property: "og:title", content: "Sarkar Perfumes — Premium Fragrances, Hand-Picked" },
       {
         property: "og:description",
         content:
-          "The 50ml Eau de Parfum gift set. Amber, oud and spice, boxed in signature Sarkar gold.",
+          "Parfum-strength scents at prices that make sense. Sarkar Orion, Noble, Throne, Regal and the BOSS Bottled Beyond 50 ml gift set.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -26,244 +22,283 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const notes = [
-  { stage: "Top", items: "Bergamot · Pink Pepper · Cardamom" },
-  { stage: "Heart", items: "Saffron · Damask Rose · Nutmeg" },
-  { stage: "Base", items: "Oud · Amber · Vetiver · Vanilla" },
+type Perfume = {
+  brand: string;
+  name: string;
+  notes: string;
+  size: string;
+  price: string;
+  img: string;
+  href: string;
+  badge?: string;
+};
+
+const sarkar: Perfume[] = [
+  {
+    brand: "Sarkar",
+    name: "Orion",
+    notes: "Fresh aromatic",
+    size: "100 ml",
+    price: "₹1,199",
+    img: "https://m.media-amazon.com/images/I/51029rqeuKL._SX522_.jpg",
+    href: "https://www.amazon.in/dp/B0GSZN5SSZ",
+    badge: "Sarkar",
+  },
+  {
+    brand: "Sarkar",
+    name: "Noble",
+    notes: "Fresh woody spicy",
+    size: "100 ml",
+    price: "₹1,199",
+    img: "https://m.media-amazon.com/images/I/51anrXnnFlL._SX522_.jpg",
+    href: "https://www.amazon.in/dp/B0GSZH9HVB",
+    badge: "Sarkar",
+  },
+  {
+    brand: "Sarkar",
+    name: "Throne",
+    notes: "Leather amber",
+    size: "100 ml",
+    price: "₹1,999",
+    img: "https://m.media-amazon.com/images/I/51ehTMkpftL._SX522_.jpg",
+    href: "https://www.amazon.in/dp/B0GSZPHKX6",
+    badge: "Sarkar",
+  },
+  {
+    brand: "Sarkar",
+    name: "Regal",
+    notes: "Oud, smoky, musky",
+    size: "100 ml",
+    price: "₹1,199",
+    img: "https://m.media-amazon.com/images/I/51OotYK8NEL._SX522_.jpg",
+    href: "https://www.amazon.in/dp/B0GSZHCX31",
+    badge: "Sarkar",
+  },
 ];
 
-const packaging = [
-  { n: "01", t: "Magnetic Gold Box", d: "Rigid board wrapped in brushed gold foil with a soft-close magnetic lid." },
-  { n: "02", t: "Velvet Cradle", d: "Die-cut black velvet insert holds the 50ml flacon dead still in transit." },
-  { n: "03", t: "Signed Card", d: "A gold-embossed authenticity card, signed off by the House of Sarkar." },
-  { n: "04", t: "Sealed & Shipped", d: "Tamper-evident seal, double-walled outer carton, insured delivery." },
+const hero = sarkar[0]!;
+
+const more: Perfume[] = [
+  {
+    brand: "BOSS",
+    name: "Bottled Beyond Eau de Parfum Gift Set",
+    notes: "Woody amber",
+    size: "50 ml",
+    price: "₹6,499",
+    img: "https://m.media-amazon.com/images/I/51yZQAUBB4L._SX522_.jpg",
+    href: "https://www.amazon.in/s?k=boss+bottled+beyond+eau+de+parfum+50ml+gift+set",
+    badge: "Gift set",
+  },
+  {
+    brand: "Armaf",
+    name: "Club de Nuit Intense Man",
+    notes: "Woody fruity",
+    size: "150 ml",
+    price: "₹5,775",
+    img: "https://m.media-amazon.com/images/I/416YO7W+nsL._SX522_.jpg",
+    href: "https://www.amazon.in/dp/B08BNTVXLN",
+  },
+  {
+    brand: "Armaf",
+    name: "Club de Nuit Urban Elixir Rose",
+    notes: "Amber spicy",
+    size: "105 ml",
+    price: "₹3,885",
+    img: "https://m.media-amazon.com/images/I/51wO5z+RXZL._SX522_.jpg",
+    href: "https://www.amazon.in/dp/B0BKZY6YWT",
+  },
+  {
+    brand: "Armaf",
+    name: "Tres Nuit Pour Homme",
+    notes: "Woody aromatic",
+    size: "105 ml",
+    price: "₹2,325",
+    img: "https://m.media-amazon.com/images/I/71ZScSjjB1L._SX522_.jpg",
+    href: "https://www.amazon.in/dp/B00J4XQ2P8",
+  },
 ];
+
+function ProductCard({ p }: { p: Perfume }) {
+  return (
+    <article className="relative flex flex-col rounded-xl border border-border/60 bg-card p-4 transition-colors hover:border-gold/50">
+      {p.badge && (
+        <span className="absolute left-6 top-6 z-10 rounded-md bg-gold px-2 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.15em] text-primary-foreground">
+          {p.badge}
+        </span>
+      )}
+      <div className="overflow-hidden rounded-lg bg-white p-4">
+        <img
+          src={p.img}
+          alt={`${p.brand} ${p.name} ${p.size} perfume bottle`}
+          loading="lazy"
+          width={400}
+          height={400}
+          className="mx-auto h-44 w-full object-contain"
+        />
+      </div>
+      <p className="mt-5 text-[0.65rem] uppercase tracking-[0.2em] text-gold">{p.brand}</p>
+      <h3 className="mt-1 font-display text-2xl leading-tight">{p.name}</h3>
+      <p className="mt-2 text-sm text-muted-foreground">
+        {p.notes} · {p.size}
+      </p>
+      <p className="mt-3 font-body text-lg font-semibold text-gold">{p.price}</p>
+      <a
+        href={p.href}
+        target="_blank"
+        rel="nofollow sponsored noopener"
+        className="mt-4 inline-flex items-center justify-center gap-2 rounded-full border border-gold/50 px-5 py-2.5 text-xs font-medium uppercase tracking-[0.15em] text-gold transition-colors hover:bg-gold hover:text-primary-foreground"
+      >
+        Buy on Amazon
+      </a>
+      <p className="mt-2 text-[0.6rem] uppercase tracking-[0.15em] text-muted-foreground/70">
+        Ad · Affiliate link — we may earn a commission
+      </p>
+    </article>
+  );
+}
 
 function Index() {
-  const [qty, setQty] = useState(1);
-
   return (
-    <div className="min-h-screen font-body text-foreground">
-      {/* Nav */}
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-border/40 bg-background/70 backdrop-blur-xl">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <a href="#top" className="font-display text-2xl tracking-[0.35em] text-gold-gradient">
-            SARKAR
+    <div className="min-h-screen font-body">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl">
+        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
+          <a href="#top" className="flex items-center gap-3">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/50 font-display text-lg text-gold">
+              S
+            </span>
+            <span className="leading-tight">
+              <span className="block font-display text-lg">Sarkar Perfumes</span>
+              <span className="block text-[0.6rem] uppercase tracking-[0.2em] text-muted-foreground">
+                Premium fragrances, hand-picked
+              </span>
+            </span>
           </a>
-          <div className="hidden gap-10 text-xs uppercase tracking-[0.25em] text-muted-foreground md:flex">
-            <a href="#product" className="transition-colors hover:text-gold">Perfume</a>
-            <a href="#notes" className="transition-colors hover:text-gold">Notes</a>
-            <a href="#packing" className="transition-colors hover:text-gold">Packing</a>
+          <div className="hidden gap-8 text-sm text-muted-foreground md:flex">
+            <a href="#catalogue" className="hover:text-gold">Shop</a>
+            <a href="#sarkar" className="hover:text-gold">Sarkar</a>
+            <a href="#more" className="hover:text-gold">All Fragrances</a>
+            <a href="#guide" className="hover:text-gold">Guide</a>
           </div>
-          <a
-            href="#product"
-            className="rounded-full border border-gold/50 px-5 py-2 text-[0.65rem] uppercase tracking-[0.25em] text-gold transition-colors hover:bg-gold hover:text-primary-foreground"
-          >
-            Buy Now
-          </a>
         </nav>
       </header>
 
       {/* Hero */}
-      <section id="top" className="relative overflow-hidden pt-28">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 pb-20 md:grid-cols-2">
+      <section id="top" className="pt-24">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-16 md:grid-cols-[1.2fr_0.8fr]">
           <div>
-            <p className="text-[0.65rem] uppercase tracking-[0.45em] text-gold">
-              Official Store · By Bhuvan Bam
+            <p className="text-xs uppercase tracking-[0.25em] text-gold">
+              The Sarkar collection · New in
             </p>
-            <h1 className="mt-6 font-display text-6xl leading-[0.95] md:text-8xl">
-              <span className="text-gold-gradient">Sarkar</span>
-              <br />
-              <span className="text-foreground/90">Perfume</span>
+            <h1 className="mt-5 font-display text-5xl leading-[1.05] md:text-6xl">
+              Premium fragrances, hand-picked
             </h1>
-            <div className="hairline my-8 max-w-sm" />
-            <p className="max-w-md text-base leading-relaxed text-muted-foreground">
-              A dark, regal signature — smoked oud laid over saffron and amber. Presented in the
-              Boss Bottled Beyond gift set, 50ml, boxed in gold.
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
+              Parfum-strength scents at prices that make sense — starting with the full Sarkar
+              range, alongside the best-selling designer fragrances worth your money. Every bottle
+              ships from Amazon.
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            <div className="mt-8 flex flex-wrap gap-3">
               <a
-                href="#product"
-                className="rounded-full bg-gold px-8 py-4 text-[0.7rem] uppercase tracking-[0.3em] text-primary-foreground shadow-lux transition-transform hover:-translate-y-0.5"
+                href="#catalogue"
+                className="rounded-full bg-gold px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
               >
-                Shop the Gift Set
+                Shop the collection
               </a>
               <a
-                href="#notes"
-                className="text-[0.7rem] uppercase tracking-[0.3em] text-muted-foreground underline-offset-8 hover:text-gold hover:underline"
+                href="#sarkar"
+                className="rounded-full border border-border px-7 py-3.5 text-sm font-semibold transition-colors hover:border-gold/60 hover:text-gold"
               >
-                Explore the notes
+                Sarkar range
               </a>
-            </div>
-            <div className="mt-12 flex gap-10 text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              <span>12 Hr Sillage</span>
-              <span>Unisex</span>
-              <span>Made in India</span>
             </div>
           </div>
-          <div className="relative">
-            <div className="absolute inset-0 -z-10 rounded-full bg-gold/15 blur-[120px]" />
-            <img
-              src={heroImg}
-              alt="Sarkar extrait de parfum bottle in gold and black on stone"
-              width={1408}
-              height={1600}
-              className="mx-auto w-full max-w-md rounded-sm shadow-lux"
-            />
+          <div className="text-center">
+            <div className="rounded-xl bg-white p-8">
+              <img
+                src={hero.img}
+                alt="Sarkar Orion 100 ml perfume bottle"
+                width={400}
+                height={400}
+                className="mx-auto h-72 object-contain"
+              />
+            </div>
+            <p className="mt-4 text-[0.65rem] uppercase tracking-[0.25em] text-gold">Sarkar</p>
+            <h2 className="mt-1 font-display text-2xl">Orion</h2>
+            <p className="mt-1 font-semibold text-gold">₹1,199</p>
           </div>
         </div>
       </section>
 
-      {/* Marquee */}
-      <div className="border-y border-border/50 bg-card/40 py-4">
-        <p className="text-center text-[0.6rem] uppercase tracking-[0.5em] text-muted-foreground">
-          Free shipping over ₹999 · Cash on delivery · 100% authentic · Gift wrapped
-        </p>
-      </div>
-
-      {/* Product */}
-      <section id="product" className="mx-auto max-w-7xl px-6 py-24">
-        <div className="grid gap-14 md:grid-cols-2">
-          <div className="relative overflow-hidden rounded-sm border border-border/60 bg-card">
-            <img
-              src={giftSetImg}
-              alt="Boss Bottled Beyond 50ml eau de parfum gift set with gold box"
-              width={1200}
-              height={1200}
-              loading="lazy"
-              className="w-full object-cover"
-            />
-            <span className="absolute left-4 top-4 rounded-full bg-gold px-4 py-1 text-[0.6rem] uppercase tracking-[0.25em] text-primary-foreground">
-              Gift Set
-            </span>
-          </div>
-
-          <div className="flex flex-col justify-center">
-            <p className="text-[0.65rem] uppercase tracking-[0.4em] text-gold">Sarkar × Boss</p>
-            <h2 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
-              BOSS Bottled Beyond Eau de Parfum 50ml Gift Set
-            </h2>
-            <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-              The full ritual in one box: the 50ml Eau de Parfum flacon, a gold-foiled magnetic
-              case, a velvet cradle and a signed authenticity card. Built to be handed over, not
-              just delivered.
-            </p>
-
-            <div className="mt-8 flex items-baseline gap-4">
-              <span className="font-display text-4xl text-gold">₹2,499</span>
-              <span className="text-sm text-muted-foreground line-through">₹4,200</span>
-              <span className="rounded-full border border-gold/40 px-3 py-1 text-[0.6rem] uppercase tracking-[0.2em] text-gold">
-                40% off
-              </span>
+      {/* Sarkar collection */}
+      <section id="sarkar" className="border-t border-border/40 bg-card/30">
+        <div className="mx-auto max-w-7xl px-6 py-20" id="catalogue">
+          <div className="flex items-end justify-between gap-6">
+            <div>
+              <h2 className="font-display text-4xl">The Sarkar collection</h2>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Four unisex parfums at 25% oil concentration. 100 ml each.
+              </p>
             </div>
-
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <div className="flex items-center rounded-full border border-border">
-                <button
-                  aria-label="Decrease quantity"
-                  onClick={() => setQty((q) => Math.max(1, q - 1))}
-                  className="px-4 py-3 text-muted-foreground transition-colors hover:text-gold"
-                >
-                  −
-                </button>
-                <span className="w-8 text-center text-sm">{qty}</span>
-                <button
-                  aria-label="Increase quantity"
-                  onClick={() => setQty((q) => q + 1)}
-                  className="px-4 py-3 text-muted-foreground transition-colors hover:text-gold"
-                >
-                  +
-                </button>
-              </div>
-              <button className="flex-1 rounded-full bg-gold px-8 py-4 text-[0.7rem] uppercase tracking-[0.3em] text-primary-foreground shadow-lux transition-transform hover:-translate-y-0.5">
-                Add to Bag · ₹{(2499 * qty).toLocaleString("en-IN")}
-              </button>
-            </div>
-
-            <ul className="mt-10 grid gap-3 border-t border-border/60 pt-8 text-xs uppercase tracking-[0.18em] text-muted-foreground sm:grid-cols-2">
-              <li>50 ml · Eau de Parfum</li>
-              <li>Amber Woody · Unisex</li>
-              <li>Dispatch in 24 hours</li>
-              <li>7-day easy returns</li>
-            </ul>
+            <a href="#more" className="shrink-0 text-sm text-gold hover:underline">
+              View all →
+            </a>
           </div>
-        </div>
-      </section>
-
-      {/* Notes */}
-      <section id="notes" className="relative overflow-hidden border-y border-border/50">
-        <img
-          src={notesBg}
-          alt=""
-          aria-hidden="true"
-          width={1400}
-          height={800}
-          loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover opacity-25"
-        />
-        <div className="relative mx-auto max-w-5xl px-6 py-24 text-center">
-          <p className="text-[0.65rem] uppercase tracking-[0.45em] text-gold">The Composition</p>
-          <h2 className="mt-4 font-display text-5xl">Three acts of smoke and gold</h2>
-          <div className="mt-14 grid gap-10 md:grid-cols-3">
-            {notes.map((n) => (
-              <div key={n.stage} className="border-t border-gold/40 pt-6">
-                <h3 className="font-display text-2xl text-gold">{n.stage}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{n.items}</p>
-              </div>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {sarkar.map((p) => (
+              <ProductCard key={p.name} p={p} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Packing */}
-      <section id="packing" className="mx-auto max-w-7xl px-6 py-24">
-        <div className="max-w-xl">
-          <p className="text-[0.65rem] uppercase tracking-[0.45em] text-gold">Packing Ritual</p>
-          <h2 className="mt-4 font-display text-5xl leading-tight">
-            How your gift set is packed
-          </h2>
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-            Every Sarkar order is hand-packed in the same four steps — the box should feel like
-            part of the fragrance.
-          </p>
+      {/* More fragrances */}
+      <section id="more" className="mx-auto max-w-7xl px-6 py-20">
+        <div className="flex items-end justify-between gap-6">
+          <div>
+            <h2 className="font-display text-4xl">More fragrances worth buying</h2>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Designer and best-selling scents we rate, across every price point.
+            </p>
+          </div>
         </div>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {more.map((p) => (
+            <ProductCard key={p.name} p={p} />
+          ))}
+        </div>
+      </section>
 
-        <div className="mt-14 grid gap-px overflow-hidden rounded-sm border border-border/60 bg-border/60 md:grid-cols-4">
-          {packaging.map((p) => (
-            <div key={p.n} className="group bg-card p-8 transition-colors hover:bg-secondary">
-              <span className="font-display text-4xl text-gold/50 transition-colors group-hover:text-gold">
-                {p.n}
-              </span>
-              <h3 className="mt-6 font-display text-2xl">{p.t}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.d}</p>
+      {/* Guide */}
+      <section id="guide" className="border-t border-border/40 bg-card/30">
+        <div className="mx-auto grid max-w-7xl gap-8 px-6 py-20 md:grid-cols-3">
+          {[
+            {
+              t: "Parfum strength",
+              d: "The Sarkar range sits at 25% oil concentration — longer wear, less reapplying.",
+            },
+            {
+              t: "Gift-ready packing",
+              d: "Gift sets like BOSS Bottled Beyond ship in the brand's sealed presentation box.",
+            },
+            {
+              t: "Ships from Amazon",
+              d: "Every listing links straight to Amazon India for authentic stock and easy returns.",
+            },
+          ].map((c) => (
+            <div key={c.t} className="rounded-xl border border-border/60 bg-card p-8">
+              <h3 className="font-display text-2xl text-gold">{c.t}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.d}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="mx-auto max-w-5xl px-6 pb-28">
-        <div className="rounded-sm border border-gold/30 bg-card/60 px-8 py-16 text-center shadow-lux">
-          <h2 className="font-display text-4xl md:text-5xl">
-            Wear the <span className="text-gold-gradient">Sarkar</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-md text-sm text-muted-foreground">
-            Limited gold-box run. Once this batch of the 50ml gift set is gone, it's gone.
-          </p>
-          <a
-            href="#product"
-            className="mt-8 inline-block rounded-full bg-gold px-10 py-4 text-[0.7rem] uppercase tracking-[0.3em] text-primary-foreground transition-transform hover:-translate-y-0.5"
-          >
-            Order Now
-          </a>
-        </div>
-      </section>
-
-      <footer className="border-t border-border/50 py-10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-6 text-center md:flex-row md:justify-between md:text-left">
-          <span className="font-display text-xl tracking-[0.35em] text-gold-gradient">SARKAR</span>
-          <p className="text-[0.65rem] uppercase tracking-[0.25em] text-muted-foreground">
-            Official Store · By Bhuvan Bam · © 2026
+      <footer className="border-t border-border/40 py-10">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 text-center md:flex-row md:text-left">
+          <span className="font-display text-lg">Sarkar Perfumes</span>
+          <p className="text-xs text-muted-foreground">
+            Affiliate disclosure: we may earn a commission on purchases made through links on this
+            site.
           </p>
         </div>
       </footer>
