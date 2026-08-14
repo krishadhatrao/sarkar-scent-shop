@@ -158,3 +158,30 @@
     color: var(--color-foreground);
   }
 }
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+    background-image: var(--gradient-night);
+    background-attachment: fixed;
+  }
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+@utility text-gold-gradient {
+  background-image: var(--gradient-gold);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility hairline {
+  background-image: linear-gradient(90deg, transparent, var(--gold), transparent);
+  height: 1px;
+}
+
+@utility shadow-lux {
+  box-shadow: var(--shadow-lux);
+}
