@@ -76,6 +76,8 @@ const sarkar: Perfume[] = [
   },
 ];
 
+const hero = sarkar[0]!;
+
 const more: Perfume[] = [
   {
     brand: "BOSS",
@@ -213,7 +215,7 @@ function Index() {
           <div className="text-center">
             <div className="rounded-xl bg-white p-8">
               <img
-                src={sarkar[0].img}
+                src={hero.img}
                 alt="Sarkar Orion 100 ml perfume bottle"
                 width={400}
                 height={400}
