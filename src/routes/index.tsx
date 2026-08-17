@@ -245,7 +245,7 @@ function Index() {
   return (
     <div className="min-h-screen font-body">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/85 backdrop-blur-xl">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
+        <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-3">
           <a href="#top" className="flex items-center gap-3">
             <span className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/50 font-display text-lg text-gold">
               S
@@ -279,7 +279,7 @@ function Index() {
           className="absolute inset-0 h-full w-full object-cover opacity-25"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/60" />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 py-24 md:grid-cols-[1.15fr_0.85fr]">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 py-24 md:grid-cols-[1.15fr_0.85fr]">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-gold">
               The Sarkar collection · New in
@@ -334,7 +334,7 @@ function Index() {
 
 
       {/* Trust strip */}
-      <section className="mx-auto mt-10 max-w-7xl px-6">
+      <section className="mx-auto mt-10 max-w-7xl px-4 sm:px-6">
         <div className="grid gap-3 rounded-2xl border border-border bg-card p-5 text-center shadow-soft sm:grid-cols-4">
           {[
             ["100% authentic", "Sealed & brand-verified"],
@@ -352,11 +352,11 @@ function Index() {
 
       {/* Sarkar collection */}
       <section id="sarkar" className="mt-6">
-        <div className="mx-auto max-w-7xl px-6 py-20" id="catalogue">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20" id="catalogue">
           <div className="flex items-end justify-between gap-6">
             <div>
               <p className="text-xs uppercase tracking-[0.28em] text-gold">The house collection</p>
-              <h2 className="mt-3 font-display text-4xl text-wine md:text-5xl">
+              <h2 className="mt-3 font-display text-3xl text-wine sm:text-4xl md:text-5xl">
                 Four parfums. Four moods.
               </h2>
               <p className="mt-2 text-sm text-muted-foreground">
@@ -376,7 +376,7 @@ function Index() {
       </section>
 
       {/* Video feature */}
-      <section className="mx-auto max-w-7xl px-6 pb-20">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 pb-14 sm:pb-20">
         <div className="grid items-stretch gap-6 md:grid-cols-2">
           <div className="overflow-hidden rounded-2xl shadow-lux">
             <video
@@ -417,10 +417,10 @@ function Index() {
       </section>
 
       {/* More fragrances */}
-      <section id="more" className="mx-auto max-w-7xl px-6 pb-20">
+      <section id="more" className="mx-auto max-w-7xl px-4 sm:px-6 pb-14 sm:pb-20">
         <div>
           <p className="text-xs uppercase tracking-[0.28em] text-gold">Curated designer picks</p>
-          <h2 className="mt-3 font-display text-4xl text-wine md:text-5xl">
+          <h2 className="mt-3 font-display text-3xl text-wine sm:text-4xl md:text-5xl">
             More fragrances worth buying
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
@@ -436,15 +436,15 @@ function Index() {
 
       {/* Reviews */}
       <section id="reviews" className="border-y border-border bg-card/40">
-        <div className="mx-auto max-w-7xl px-6 py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
               <p className="text-xs uppercase tracking-[0.28em] text-gold">Loved by 2,400+ buyers</p>
-              <h2 className="mt-3 font-display text-4xl text-wine md:text-5xl">
+              <h2 className="mt-3 font-display text-3xl text-wine sm:text-4xl md:text-5xl">
                 What our customers say
               </h2>
             </div>
-            <div className="flex items-center gap-3 rounded-full border border-gold/40 bg-card px-6 py-3 shadow-soft">
+            <div className="flex items-center gap-3 rounded-full border border-gold/40 bg-card px-4 sm:px-6 py-3 shadow-soft">
               <span className="font-display text-3xl text-wine">4.8</span>
               <div>
                 <Stars n={5} />
@@ -478,7 +478,7 @@ function Index() {
       </section>
 
       {/* Closing CTA */}
-      <section className="mx-auto max-w-7xl px-6 py-20">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20">
         <div className="rounded-[2rem] bg-gradient-wine px-8 py-14 text-center text-foreground shadow-lux">
           <p className="text-xs uppercase tracking-[0.3em] text-gold-soft">Ready when you are</p>
           <h2 className="mx-auto mt-4 max-w-2xl font-display text-4xl leading-tight md:text-5xl">
@@ -497,7 +497,7 @@ function Index() {
       </section>
 
       <footer className="border-t border-border py-10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 text-center md:flex-row md:text-left">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 sm:px-6 text-center md:flex-row md:text-left">
           <span className="font-display text-lg text-wine">Sarkar Perfumes</span>
           <p className="text-xs text-muted-foreground">
             Affiliate disclosure: we may earn a commission on purchases made through links on this
