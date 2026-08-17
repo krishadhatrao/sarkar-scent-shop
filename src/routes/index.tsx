@@ -194,28 +194,25 @@ function Stars({ n = 5 }: { n?: number }) {
 
 function ProductCard({ p }: { p: Perfume }) {
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-gold/25 bg-card p-4 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-gold/60 hover:shadow-lux">
-      {p.badge && (
-        <span className="absolute left-6 top-6 z-10 rounded-full bg-gradient-wine px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.15em] text-primary-foreground">
-          {p.badge}
+    <article className="group relative flex flex-col rounded-lg border border-border bg-card p-3 transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-lux">
+      <div className="relative">
+        <span className="absolute left-2 top-2 z-10 rounded bg-gradient-gold px-2 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-primary-foreground">
+          {p.badge ?? p.brand}
         </span>
-      )}
-      <div
-        className="overflow-hidden rounded-xl p-5"
-        style={{ backgroundImage: p.tone }}
-      >
-        <img
-          src={p.img}
-          alt={`${p.brand} ${p.name} ${p.size} perfume bottle`}
-          loading="lazy"
-          width={400}
-          height={400}
-          className="mx-auto h-44 w-full object-contain drop-shadow-xl transition-transform duration-500 group-hover:scale-105"
-        />
+        <div className="overflow-hidden rounded-md bg-champagne p-4">
+          <img
+            src={p.img}
+            alt={`${p.brand} ${p.name} ${p.size} perfume bottle`}
+            loading="lazy"
+            width={400}
+            height={400}
+            className="mx-auto h-44 w-full object-contain transition-transform duration-500 group-hover:scale-105"
+          />
+        </div>
       </div>
-      <p className="mt-5 text-[0.65rem] uppercase tracking-[0.22em] text-gold">{p.brand}</p>
-      <h3 className="mt-1 font-display text-2xl leading-tight text-wine">{p.name}</h3>
-      <p className="mt-2 text-sm text-muted-foreground">
+      <p className="mt-4 text-[0.65rem] uppercase tracking-[0.22em] text-gold">{p.brand}</p>
+      <h3 className="mt-1 font-display text-2xl leading-tight text-foreground">{p.name}</h3>
+      <p className="mt-1 text-sm text-muted-foreground">
         {p.notes} · {p.size}
       </p>
       <div className="mt-2 flex items-center gap-2 text-xs text-muted-foreground">
@@ -225,14 +222,14 @@ function ProductCard({ p }: { p: Perfume }) {
         </span>
       </div>
       <p className="mt-3 flex items-baseline gap-2">
-        <span className="font-body text-xl font-semibold text-wine">{p.price}</span>
+        <span className="font-body text-lg font-semibold tracking-wide text-gold">{p.price}</span>
         {p.mrp && <span className="text-sm text-muted-foreground line-through">{p.mrp}</span>}
       </p>
       <a
         href={p.href}
         target="_blank"
         rel="nofollow sponsored noopener"
-        className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-gold px-5 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5"
+        className="mt-4 inline-flex items-center justify-center gap-2 rounded-md bg-gradient-gold px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.15em] text-primary-foreground transition-transform hover:-translate-y-0.5"
       >
         Buy on Amazon
       </a>
@@ -242,6 +239,7 @@ function ProductCard({ p }: { p: Perfume }) {
     </article>
   );
 }
+
 
 function Index() {
   return (
