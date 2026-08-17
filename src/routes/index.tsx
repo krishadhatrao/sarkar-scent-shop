@@ -194,28 +194,25 @@ function Stars({ n = 5 }: { n?: number }) {
 
 function ProductCard({ p }: { p: Perfume }) {
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-gold/25 bg-card p-4 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-gold/60 hover:shadow-lux">
-      {p.badge && (
-        <span className="absolute left-6 top-6 z-10 rounded-full bg-gradient-wine px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.15em] text-primary-foreground">
-          {p.badge}
+    <article className="group relative flex flex-col rounded-lg border border-border bg-card p-3 transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-lux">
+      <div className="relative">
+        <span className="absolute left-2 top-2 z-10 rounded bg-gradient-gold px-2 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-primary-foreground">
+          {p.badge ?? p.brand}
         </span>
-      )}
-      <div
-        className="overflow-hidden rounded-xl p-5"
-        style={{ backgroundImage: p.tone }}
-      >
-        <img
-          src={p.img}
-          alt={`${p.brand} ${p.name} ${p.size} perfume bottle`}
-          loading="lazy"
-          width={400}
-          height={400}
-          className="mx-auto h-44 w-full object-contain drop-shadow-xl transition-transform duration-500 group-hover:scale-105"
-        />
+        <div className="overflow-hidden rounded-md bg-champagne p-4">
+          <img
+            src={p.img}
+            alt={`${p.brand} ${p.name} ${p.size} perfume bottle`}
+            loading="lazy"
+            width={400}
+            height={400}
+            className="mx-auto h-44 w-full object-contain transition-transform duration-500 group-hover:scale-105"
+          />
+        </div>
       </div>
-      <p className="mt-5 text-[0.65rem] uppercase tracking-[0.22em] text-gold">{p.brand}</p>
-      <h3 className="mt-1 font-display text-2xl leading-tight text-wine">{p.name}</h3>
-      <p className="mt-2 text-sm text-muted-foreground">
+      <p className="mt-4 text-[0.65rem] uppercase tracking-[0.22em] text-gold">{p.brand}</p>
+      <h3 className="mt-1 font-display text-2xl leading-tight text-foreground">{p.name}</h3>
+      <p className="mt-1 text-sm text-muted-foreground">
         {p.notes} · {p.size}
       </p>
       <div className="mt-2 flex items-center gap-2 text-xs text-muted-foreground">
@@ -225,14 +222,14 @@ function ProductCard({ p }: { p: Perfume }) {
         </span>
       </div>
       <p className="mt-3 flex items-baseline gap-2">
-        <span className="font-body text-xl font-semibold text-wine">{p.price}</span>
+        <span className="font-body text-lg font-semibold tracking-wide text-gold">{p.price}</span>
         {p.mrp && <span className="text-sm text-muted-foreground line-through">{p.mrp}</span>}
       </p>
       <a
         href={p.href}
         target="_blank"
         rel="nofollow sponsored noopener"
-        className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-gold px-5 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5"
+        className="mt-4 inline-flex items-center justify-center gap-2 rounded-md bg-gradient-gold px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.15em] text-primary-foreground transition-transform hover:-translate-y-0.5"
       >
         Buy on Amazon
       </a>
@@ -243,19 +240,20 @@ function ProductCard({ p }: { p: Perfume }) {
   );
 }
 
+
 function Index() {
   return (
     <div className="min-h-screen font-body">
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-gold/25 bg-background/85 backdrop-blur-xl">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/85 backdrop-blur-xl">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
           <a href="#top" className="flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-wine font-display text-lg text-primary-foreground">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/50 font-display text-lg text-gold">
               S
             </span>
             <span className="leading-tight">
-              <span className="block font-display text-lg text-wine">Sarkar Perfumes</span>
+              <span className="block font-display text-lg text-foreground">Sarkar Perfumes</span>
               <span className="block text-[0.6rem] uppercase tracking-[0.2em] text-muted-foreground">
-                Luxury parfums, hand-picked
+                Premium fragrances, hand-picked
               </span>
             </span>
           </a>
@@ -268,60 +266,76 @@ function Index() {
         </nav>
       </header>
 
-      {/* Hero with video */}
-      <section id="top" className="relative pt-16">
-        <div className="relative mx-auto max-w-[92rem] px-4">
-          <div className="relative overflow-hidden rounded-[2rem] shadow-lux">
-            <video
-              src={heroVideo.url}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-label="Luxury Sarkar perfume flacon in golden light"
-              className="h-[30rem] w-full object-cover md:h-[38rem]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-wine-deep/85 via-wine/45 to-transparent" />
-            <div className="absolute inset-0 flex items-center">
-              <div className="max-w-2xl px-8 md:px-16">
-                <p className="text-xs uppercase tracking-[0.3em] text-gold-soft">
-                  The Sarkar Maison · 25% parfum oil
-                </p>
-                <h1 className="mt-5 font-display text-5xl leading-[1.02] text-champagne md:text-7xl">
-                  Wear something <em className="text-gold-soft">unforgettable</em>
-                </h1>
-                <p className="mt-6 max-w-lg text-base leading-relaxed text-champagne/85">
-                  Hand-blended parfums with saffron, oud and white amber — the depth of a luxury
-                  house, at a price that still makes sense. Free delivery via Amazon India.
-                </p>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <a
-                    href="#catalogue"
-                    className="rounded-full bg-gradient-gold px-8 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5"
-                  >
-                    Shop the collection
-                  </a>
-                  <a
-                    href="#reviews"
-                    className="rounded-full border border-champagne/50 px-8 py-3.5 text-sm font-semibold text-champagne transition-colors hover:bg-champagne/15"
-                  >
-                    Read 2,400+ reviews
-                  </a>
-                </div>
-                <div className="mt-8 flex items-center gap-3 text-sm text-champagne/85">
-                  <Stars n={5} />
-                  <span>4.8 average · 2,433 verified buyers</span>
-                </div>
-              </div>
+      {/* Hero — official layout: copy left, white product tile right */}
+      <section id="top" className="relative overflow-hidden pt-16">
+        <video
+          src={heroVideo.url}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-label="Luxury Sarkar perfume flacon in golden light"
+          className="absolute inset-0 h-full w-full object-cover opacity-25"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/60" />
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 py-24 md:grid-cols-[1.15fr_0.85fr]">
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-gold">
+              The Sarkar collection · New in
+            </p>
+            <h1 className="mt-5 font-display text-5xl leading-[1.05] text-foreground md:text-6xl">
+              Premium fragrances, hand-picked
+            </h1>
+            <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground">
+              Parfum-strength scents at prices that make sense — starting with the full Sarkar
+              range, alongside the best-selling designer fragrances worth your money. Every bottle
+              ships from Amazon.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="#catalogue"
+                className="rounded-full bg-gradient-gold px-8 py-3.5 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
+              >
+                Shop the collection
+              </a>
+              <a
+                href="#sarkar"
+                className="rounded-full border border-border px-8 py-3.5 text-sm font-semibold text-foreground transition-colors hover:border-gold/60 hover:text-gold"
+              >
+                Sarkar range
+              </a>
             </div>
+            <div className="mt-8 flex items-center gap-3 text-sm text-muted-foreground">
+              <Stars n={5} />
+              <span>4.8 average · 2,433 verified buyers</span>
+            </div>
+          </div>
+          <div className="mx-auto w-full max-w-xs text-center">
+            <a href={hero.href} target="_blank" rel="nofollow sponsored noopener">
+              <div className="rounded-lg bg-champagne p-6 shadow-lux">
+                <img
+                  src={hero.img}
+                  alt={`${hero.brand} ${hero.name} ${hero.size} perfume bottle`}
+                  width={520}
+                  height={520}
+                  className="mx-auto h-72 w-full object-contain"
+                />
+              </div>
+              <p className="mt-5 text-[0.65rem] uppercase tracking-[0.24em] text-gold">
+                {hero.brand}
+              </p>
+              <p className="mt-1 font-display text-3xl text-foreground">{hero.name}</p>
+              <p className="mt-1 font-semibold tracking-wide text-gold">{hero.price}</p>
+            </a>
           </div>
         </div>
       </section>
 
+
       {/* Trust strip */}
       <section className="mx-auto mt-10 max-w-7xl px-6">
-        <div className="grid gap-3 rounded-2xl border border-gold/25 bg-card p-5 text-center shadow-soft sm:grid-cols-4">
+        <div className="grid gap-3 rounded-2xl border border-border bg-card p-5 text-center shadow-soft sm:grid-cols-4">
           {[
             ["100% authentic", "Sealed & brand-verified"],
             ["12+ hour wear", "25% oil concentration"],
@@ -376,12 +390,12 @@ function Index() {
               className="h-full min-h-[22rem] w-full object-cover"
             />
           </div>
-          <div className="flex flex-col justify-center rounded-2xl bg-gradient-wine p-10 text-primary-foreground shadow-lux">
+          <div className="flex flex-col justify-center rounded-2xl bg-gradient-wine p-10 text-foreground shadow-lux">
             <p className="text-xs uppercase tracking-[0.28em] text-gold-soft">The mist</p>
             <h2 className="mt-4 font-display text-4xl leading-tight">
               A single spray that lingers past midnight
             </h2>
-            <p className="mt-5 text-sm leading-relaxed text-primary-foreground/85">
+            <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
               Our atomiser breaks the parfum into an ultra-fine cloud so the oil settles evenly on
               skin and fabric. Less product, longer trail, richer opening — the way the great houses
               do it.
@@ -392,7 +406,7 @@ function Index() {
                 ["12h+", "Longevity"],
                 ["4.8★", "Rated"],
               ].map(([n, l]) => (
-                <div key={l} className="rounded-xl bg-champagne/10 py-4">
+                <div key={l} className="rounded-xl bg-foreground/5 py-4">
                   <p className="font-display text-3xl text-gold-soft">{n}</p>
                   <p className="mt-1 text-[0.6rem] uppercase tracking-[0.18em]">{l}</p>
                 </div>
@@ -421,7 +435,7 @@ function Index() {
       </section>
 
       {/* Reviews */}
-      <section id="reviews" className="border-y border-gold/25 bg-champagne/60">
+      <section id="reviews" className="border-y border-border bg-card/40">
         <div className="mx-auto max-w-7xl px-6 py-20">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
@@ -444,7 +458,7 @@ function Index() {
             {reviews.map((r) => (
               <figure
                 key={r.name}
-                className="flex flex-col rounded-2xl border border-gold/25 bg-card p-6 shadow-soft"
+                className="flex flex-col rounded-2xl border border-border bg-card p-6 shadow-soft"
               >
                 <Stars n={r.stars} />
                 <figcaption className="mt-3 font-display text-xl text-wine">{r.title}</figcaption>
@@ -465,12 +479,12 @@ function Index() {
 
       {/* Closing CTA */}
       <section className="mx-auto max-w-7xl px-6 py-20">
-        <div className="rounded-[2rem] bg-gradient-wine px-8 py-14 text-center text-primary-foreground shadow-lux">
+        <div className="rounded-[2rem] bg-gradient-wine px-8 py-14 text-center text-foreground shadow-lux">
           <p className="text-xs uppercase tracking-[0.3em] text-gold-soft">Ready when you are</p>
           <h2 className="mx-auto mt-4 max-w-2xl font-display text-4xl leading-tight md:text-5xl">
             Find the scent people remember you by
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-sm text-primary-foreground/85">
+          <p className="mx-auto mt-4 max-w-xl text-sm text-muted-foreground">
             Every bottle ships sealed from Amazon India with easy returns.
           </p>
           <a
@@ -482,7 +496,7 @@ function Index() {
         </div>
       </section>
 
-      <footer className="border-t border-gold/25 py-10">
+      <footer className="border-t border-border py-10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 text-center md:flex-row md:text-left">
           <span className="font-display text-lg text-wine">Sarkar Perfumes</span>
           <p className="text-xs text-muted-foreground">
