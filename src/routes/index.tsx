@@ -454,7 +454,7 @@ function Index() {
               </div>
             </div>
           </div>
-          <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
             {reviews.map((r) => (
               <figure
                 key={r.name}
