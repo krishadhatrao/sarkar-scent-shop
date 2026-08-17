@@ -244,16 +244,16 @@ function ProductCard({ p }: { p: Perfume }) {
 function Index() {
   return (
     <div className="min-h-screen font-body">
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-gold/25 bg-background/85 backdrop-blur-xl">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/85 backdrop-blur-xl">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
           <a href="#top" className="flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-wine font-display text-lg text-primary-foreground">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/50 font-display text-lg text-gold">
               S
             </span>
             <span className="leading-tight">
-              <span className="block font-display text-lg text-wine">Sarkar Perfumes</span>
+              <span className="block font-display text-lg text-foreground">Sarkar Perfumes</span>
               <span className="block text-[0.6rem] uppercase tracking-[0.2em] text-muted-foreground">
-                Luxury parfums, hand-picked
+                Premium fragrances, hand-picked
               </span>
             </span>
           </a>
@@ -266,56 +266,72 @@ function Index() {
         </nav>
       </header>
 
-      {/* Hero with video */}
-      <section id="top" className="relative pt-16">
-        <div className="relative mx-auto max-w-[92rem] px-4">
-          <div className="relative overflow-hidden rounded-[2rem] shadow-lux">
-            <video
-              src={heroVideo.url}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-label="Luxury Sarkar perfume flacon in golden light"
-              className="h-[30rem] w-full object-cover md:h-[38rem]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-wine-deep/85 via-wine/45 to-transparent" />
-            <div className="absolute inset-0 flex items-center">
-              <div className="max-w-2xl px-8 md:px-16">
-                <p className="text-xs uppercase tracking-[0.3em] text-gold-soft">
-                  The Sarkar Maison · 25% parfum oil
-                </p>
-                <h1 className="mt-5 font-display text-5xl leading-[1.02] text-champagne md:text-7xl">
-                  Wear something <em className="text-gold-soft">unforgettable</em>
-                </h1>
-                <p className="mt-6 max-w-lg text-base leading-relaxed text-champagne/85">
-                  Hand-blended parfums with saffron, oud and white amber — the depth of a luxury
-                  house, at a price that still makes sense. Free delivery via Amazon India.
-                </p>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <a
-                    href="#catalogue"
-                    className="rounded-full bg-gradient-gold px-8 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5"
-                  >
-                    Shop the collection
-                  </a>
-                  <a
-                    href="#reviews"
-                    className="rounded-full border border-champagne/50 px-8 py-3.5 text-sm font-semibold text-champagne transition-colors hover:bg-champagne/15"
-                  >
-                    Read 2,400+ reviews
-                  </a>
-                </div>
-                <div className="mt-8 flex items-center gap-3 text-sm text-champagne/85">
-                  <Stars n={5} />
-                  <span>4.8 average · 2,433 verified buyers</span>
-                </div>
-              </div>
+      {/* Hero — official layout: copy left, white product tile right */}
+      <section id="top" className="relative overflow-hidden pt-16">
+        <video
+          src={heroVideo.url}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-label="Luxury Sarkar perfume flacon in golden light"
+          className="absolute inset-0 h-full w-full object-cover opacity-25"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/60" />
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 py-24 md:grid-cols-[1.15fr_0.85fr]">
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-gold">
+              The Sarkar collection · New in
+            </p>
+            <h1 className="mt-5 font-display text-5xl leading-[1.05] text-foreground md:text-6xl">
+              Premium fragrances, hand-picked
+            </h1>
+            <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground">
+              Parfum-strength scents at prices that make sense — starting with the full Sarkar
+              range, alongside the best-selling designer fragrances worth your money. Every bottle
+              ships from Amazon.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="#catalogue"
+                className="rounded-full bg-gradient-gold px-8 py-3.5 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
+              >
+                Shop the collection
+              </a>
+              <a
+                href="#sarkar"
+                className="rounded-full border border-border px-8 py-3.5 text-sm font-semibold text-foreground transition-colors hover:border-gold/60 hover:text-gold"
+              >
+                Sarkar range
+              </a>
             </div>
+            <div className="mt-8 flex items-center gap-3 text-sm text-muted-foreground">
+              <Stars n={5} />
+              <span>4.8 average · 2,433 verified buyers</span>
+            </div>
+          </div>
+          <div className="mx-auto w-full max-w-xs text-center">
+            <a href={hero.href} target="_blank" rel="nofollow sponsored noopener">
+              <div className="rounded-lg bg-champagne p-6 shadow-lux">
+                <img
+                  src={hero.img}
+                  alt={`${hero.brand} ${hero.name} ${hero.size} perfume bottle`}
+                  width={520}
+                  height={520}
+                  className="mx-auto h-72 w-full object-contain"
+                />
+              </div>
+              <p className="mt-5 text-[0.65rem] uppercase tracking-[0.24em] text-gold">
+                {hero.brand}
+              </p>
+              <p className="mt-1 font-display text-3xl text-foreground">{hero.name}</p>
+              <p className="mt-1 font-semibold tracking-wide text-gold">{hero.price}</p>
+            </a>
           </div>
         </div>
       </section>
+
 
       {/* Trust strip */}
       <section className="mx-auto mt-10 max-w-7xl px-6">
