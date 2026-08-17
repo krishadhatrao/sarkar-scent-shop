@@ -335,7 +335,7 @@ function Index() {
 
       {/* Trust strip */}
       <section className="mx-auto mt-10 max-w-7xl px-6">
-        <div className="grid gap-3 rounded-2xl border border-gold/25 bg-card p-5 text-center shadow-soft sm:grid-cols-4">
+        <div className="grid gap-3 rounded-2xl border border-border bg-card p-5 text-center shadow-soft sm:grid-cols-4">
           {[
             ["100% authentic", "Sealed & brand-verified"],
             ["12+ hour wear", "25% oil concentration"],
@@ -390,12 +390,12 @@ function Index() {
               className="h-full min-h-[22rem] w-full object-cover"
             />
           </div>
-          <div className="flex flex-col justify-center rounded-2xl bg-gradient-wine p-10 text-primary-foreground shadow-lux">
+          <div className="flex flex-col justify-center rounded-2xl bg-gradient-wine p-10 text-foreground shadow-lux">
             <p className="text-xs uppercase tracking-[0.28em] text-gold-soft">The mist</p>
             <h2 className="mt-4 font-display text-4xl leading-tight">
               A single spray that lingers past midnight
             </h2>
-            <p className="mt-5 text-sm leading-relaxed text-primary-foreground/85">
+            <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
               Our atomiser breaks the parfum into an ultra-fine cloud so the oil settles evenly on
               skin and fabric. Less product, longer trail, richer opening — the way the great houses
               do it.
@@ -406,7 +406,7 @@ function Index() {
                 ["12h+", "Longevity"],
                 ["4.8★", "Rated"],
               ].map(([n, l]) => (
-                <div key={l} className="rounded-xl bg-champagne/10 py-4">
+                <div key={l} className="rounded-xl bg-foreground/5 py-4">
                   <p className="font-display text-3xl text-gold-soft">{n}</p>
                   <p className="mt-1 text-[0.6rem] uppercase tracking-[0.18em]">{l}</p>
                 </div>
@@ -435,7 +435,7 @@ function Index() {
       </section>
 
       {/* Reviews */}
-      <section id="reviews" className="border-y border-gold/25 bg-champagne/60">
+      <section id="reviews" className="border-y border-border bg-card/40">
         <div className="mx-auto max-w-7xl px-6 py-20">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
@@ -458,7 +458,7 @@ function Index() {
             {reviews.map((r) => (
               <figure
                 key={r.name}
-                className="flex flex-col rounded-2xl border border-gold/25 bg-card p-6 shadow-soft"
+                className="flex flex-col rounded-2xl border border-border bg-card p-6 shadow-soft"
               >
                 <Stars n={r.stars} />
                 <figcaption className="mt-3 font-display text-xl text-wine">{r.title}</figcaption>
@@ -479,12 +479,12 @@ function Index() {
 
       {/* Closing CTA */}
       <section className="mx-auto max-w-7xl px-6 py-20">
-        <div className="rounded-[2rem] bg-gradient-wine px-8 py-14 text-center text-primary-foreground shadow-lux">
+        <div className="rounded-[2rem] bg-gradient-wine px-8 py-14 text-center text-foreground shadow-lux">
           <p className="text-xs uppercase tracking-[0.3em] text-gold-soft">Ready when you are</p>
           <h2 className="mx-auto mt-4 max-w-2xl font-display text-4xl leading-tight md:text-5xl">
             Find the scent people remember you by
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-sm text-primary-foreground/85">
+          <p className="mx-auto mt-4 max-w-xl text-sm text-muted-foreground">
             Every bottle ships sealed from Amazon India with easy returns.
           </p>
           <a
@@ -496,7 +496,7 @@ function Index() {
         </div>
       </section>
 
-      <footer className="border-t border-gold/25 py-10">
+      <footer className="border-t border-border py-10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 text-center md:flex-row md:text-left">
           <span className="font-display text-lg text-wine">Sarkar Perfumes</span>
           <p className="text-xs text-muted-foreground">
