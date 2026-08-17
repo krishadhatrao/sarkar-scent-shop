@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "25% oil concentration parfums in champagne, saffron, oud and rose. Shop Sarkar Orion, Noble, Throne, Regal and designer gift sets.",
+          "Parfum-strength luxury fragrances from the Sarkar house, plus designer best-sellers including the BOSS Bottled Beyond 50 ml gift set. Rated 4.8 by 2,400+ buyers.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
